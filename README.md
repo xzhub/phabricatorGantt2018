@@ -1,6 +1,8 @@
 Phabricator Gantt Diagrams
 ==========================
 
+This project is cloned from phabricatorGantt (https://github.com/kennyeni/phabricatorGantt).
+
 This is a quick prototype that displays all Phabricator Tasks (Maniphest) as a Gantt Diagram. For this purpose some things have to be configured.
 
 Configure Phabricator
@@ -34,10 +36,21 @@ I used two external libraries, which you simple have to download and unzip in th
 * https://github.com/phacility/libphutil
 * http://dhtmlx.com/docs/products/dhtmlxGantt/
 
-Then you will need to edit "functions.php" file, adding Phabricator's domain, Bot username and conduit certificate.
+Then you will need to edit "functions.php" file, adding Phabricator's api_token and server_url.
 
+Test run this project
+----------------------
 
-Happy Planning!
+```
+git clone git@github.com:xzhub/phabricatorGantt2018.git
+cd phabricatorGantt2018
+git clone git@github.com:phacility/libphutil.git
+wget https://dhtmlx.com/x/download/regular/dhtmlxGantt.zip
+unzip dhtmlxGantt.zip 
+vi functions.php # fill in $api_token and $server_url
 
-Please tell me what you think!
-contact[at] ekenny[dot]org
+#copy the folder to your web root then visit http:/<your-server-ip>/phabricatorGantt2018
+#Or, you can use docker to run a php server, then visit http://localhost/
+sudo docker run -d -p 80:80 -v /path/to/phabricatorGantt2018:/app tutum/apache-php
+```
+
